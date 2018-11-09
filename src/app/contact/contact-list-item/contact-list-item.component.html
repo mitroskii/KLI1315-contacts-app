@@ -1,3 +1,12 @@
-<li (click)="onContactSelect()">
-  {{contact.firstName}} {{contact.lastName}}
-</li>
+<div (click)="onContactSelect()">
+  <mat-card class="mat-card-css">
+    <mat-card-title><ngx-avatar name="{{contact.firstName}} {{contact.lastName}}"></ngx-avatar></mat-card-title>
+    <mat-card-content>{{contact.firstName}} {{contact.lastName}}</mat-card-content>
+    <mat-card-content><mat-icon>place</mat-icon> {{contact.city}}</mat-card-content>
+    <mat-card-content><mat-icon>email</mat-icon> {{contact.email}} </mat-card-content>
+    <mat-card-content><mat-icon>phone</mat-icon> {{contact.gsm}}</mat-card-content>
+    <mat-card-actions fxLayoutAlign="end">
+      <mat-icon>delete</mat-icon>
+    </mat-card-actions>
+  </mat-card>
+</div>

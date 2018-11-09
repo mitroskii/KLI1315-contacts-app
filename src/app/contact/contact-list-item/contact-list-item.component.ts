@@ -17,7 +17,6 @@ export class ContactListItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.contact);
   }
 
   onContactSelect() {

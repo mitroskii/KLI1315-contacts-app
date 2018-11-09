@@ -12,3 +12,11 @@
 .app-sidenav {
   width: 200px;
 }
+
+.app-sidenav-header{
+  background-color: white;
+  text-align: center;
+  color: black;
+  font-size: larger;
+}
+

@@ -6,7 +6,10 @@ import { ContactListItemComponent } from './contact/contact-list-item/contact-li
 import {ContactService} from './contact/service/contact.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToolbarComponent } from './ui/toolbar/toolbar/toolbar.component';
-import {MatButtonModule, MatIconModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
+import {MatButtonModule, MatCardModule, MatIconModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
+import {AvatarModule} from 'ngx-avatar';
+import {FlexLayoutModule} from '@angular/flex-layout';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,11 @@ import {MatButtonModule, MatIconModule, MatSidenavModule, MatToolbarModule} from
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatCardModule,
+    AvatarModule,
+    FlexLayoutModule,
+    NgxPaginationModule
   ],
   providers: [ContactService],
   bootstrap: [AppComponent]

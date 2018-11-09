@@ -16,13 +16,7 @@ export class ContactListComponent implements OnInit {
   }
 
   ngOnInit() {
-    /*
-    this.contacts.push(new Contact(1, 'First', 'Contact'));
-    this.contacts.push(new Contact(2, 'Second', 'Contact'));
-    this.contacts.push(new Contact(3, 'Third', 'Contact'));
-    */
     this.contacts = this.contactService.getContacts();
-    console.log(this.contacts);
   }
 
   onContactSelect(contact: Contact) {

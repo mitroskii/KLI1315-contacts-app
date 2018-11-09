@@ -17,7 +17,6 @@ export class ToolbarComponent implements OnInit {
   }
 
   onMenuClick() {
-    console.log('menu clicked');
     this.menuClick.emit();
   }
 }
