@@ -23,5 +23,12 @@ export class ContactService {
   getContacts(): Contact[] {
     return this.contacts;
   }
+
+  removeContact(contact: Contact) {
+
+    this.contacts.splice(this.contacts.indexOf(contact), 1);
+
+  }
 }
+
 
