@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {Contact} from '../contact';
+import {ContactService} from '../service/contact.service';
 
 @Component({
   selector: 'app-contact-detail',
@@ -8,7 +10,10 @@ import {Router} from '@angular/router';
 })
 export class ContactDetailComponent implements OnInit {
 
-  constructor(private router: Router) {
+  contact: Contact;
+
+  constructor(private router: Router, private contactService: ContactService) {
+    this.contact = new Contact();
   }
 
   ngOnInit() {
@@ -16,5 +21,6 @@ export class ContactDetailComponent implements OnInit {
 
   onSave(): void {
     this.router.navigate(['/contacts']);
+    this.contactService.addContact(this.contact);
   }
 }

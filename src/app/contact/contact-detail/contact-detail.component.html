@@ -1,6 +1,73 @@
-<p>
-  contact-detail works!
-</p>
-<button mat-fab class="app-fab" (click)="onSave()" color="primary">
+<mat-card>
+  <form (submit)="onSave()" #contactForm="ngForm">
+    <div fxLayout="row" fxLayoutAlign="center start">
+      <div fxLayout="column">
+        <mat-form-field floatPlaceholder="auto">
+          <input matInput [(ngModel)]="contact.firstName"
+                 name="FirstName" #FirstName="ngModel"
+                 type="text"
+                 required
+                 placeholder="First name">
+          <mat-error *ngIf="FirstName.invalid">
+            First name required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="contact.lastName"
+                 name="LastName" #LastName="ngModel"
+                 type="text"
+                 required
+                 placeholder="Last name">
+          <mat-error *ngIf="LastName.invalid">
+            Last name required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="contact.city"
+                 name="City" #City="ngModel"
+                 type="text"
+                 required
+                 placeholder="City">
+          <mat-error *ngIf="City.invalid">
+            City required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="contact.address"
+                 name="Address" #Address="ngModel"
+                 type="text"
+                 required
+                 placeholder="Address">
+          <mat-error *ngIf="Address.invalid">
+            Address required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="contact.email"
+                 name="Email" #Email="ngModel"
+                 type="email"
+                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                 required
+                 placeholder="Email">
+          <mat-error *ngIf="Email.invalid && Email.errors.pattern">
+            Email must be a valid email address
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="contact.gsm"
+                 name="gsm" #gsm="ngModel"
+                 type="tel"
+                 required maxlength="15"
+                 placeholder="Phone">
+          <mat-error *ngIf="gsm.invalid">
+            Please enter a valid number
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </form>
+</mat-card>
+
+<button mat-fab class="app-fab" [disabled]="!contactForm.form.valid" (click)="onSave()" color="primary">
   <mat-icon>check</mat-icon>
 </button>

@@ -6,12 +6,21 @@ import {ContactListItemComponent} from './contact/contact-list-item/contact-list
 import {ContactService} from './contact/service/contact.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToolbarComponent} from './ui/toolbar/toolbar/toolbar.component';
-import {MatButtonModule, MatCardModule, MatIconModule, MatSidenavModule, MatToolbarModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatSidenavModule,
+  MatToolbarModule
+} from '@angular/material';
 import {AvatarModule} from 'ngx-avatar';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {ContactDetailComponent} from './contact/contact-detail/contact-detail.component';
 import {RouterModule, Routes} from '@angular/router';
+import {FormsModule} from '@angular/forms';
 
 
 const appRoutes: Routes = [
@@ -39,7 +48,10 @@ const appRoutes: Routes = [
     AvatarModule,
     FlexLayoutModule,
     NgxPaginationModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    MatFormFieldModule,
+    MatInputModule,
+    FormsModule
   ],
   providers: [ContactService],
   bootstrap: [AppComponent]
