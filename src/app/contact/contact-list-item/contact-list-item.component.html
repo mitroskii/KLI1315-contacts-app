@@ -1,6 +1,8 @@
 <div (click)="onContactSelect()">
   <mat-card class="mat-card-css">
-    <mat-card-actions fxLayoutAlign="end"><mat-icon>edit</mat-icon></mat-card-actions>
+    <mat-card-actions fxLayoutAlign="end">
+       <mat-icon>edit</mat-icon>
+    </mat-card-actions>
     <mat-card-title><ngx-avatar name="{{contact.firstName}} {{contact.lastName}}" fxLayoutAlign="center"></ngx-avatar></mat-card-title>
     <mat-card-content>{{contact.firstName}} {{contact.lastName}}</mat-card-content>
     <mat-card-content><mat-icon>location_city</mat-icon> {{contact.city}}</mat-card-content>

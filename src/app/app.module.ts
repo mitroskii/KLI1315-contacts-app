@@ -21,6 +21,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {ContactDetailComponent} from './contact/contact-detail/contact-detail.component';
 import {RouterModule, Routes} from '@angular/router';
 import {FormsModule} from '@angular/forms';
+import {ToolbarService} from './ui/toolbar/toolbar.service';
 
 
 const appRoutes: Routes = [
@@ -53,7 +54,7 @@ const appRoutes: Routes = [
     MatInputModule,
     FormsModule
   ],
-  providers: [ContactService],
+  providers: [ContactService, ToolbarService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
