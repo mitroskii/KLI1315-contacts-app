@@ -12,7 +12,7 @@ import {
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatSidenavModule,
+  MatSidenavModule, MatSnackBarModule,
   MatToolbarModule
 } from '@angular/material';
 import {AvatarModule} from 'ngx-avatar';
@@ -22,12 +22,14 @@ import {ContactDetailComponent} from './contact/contact-detail/contact-detail.co
 import {RouterModule, Routes} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {ToolbarService} from './ui/toolbar/toolbar.service';
+import {ContactLocalStorageService} from './contact/service/contact-local-storage.service';
 
 
 const appRoutes: Routes = [
   {path: 'contacts', component: ContactListComponent},
   {path: 'contacts/new', component: ContactDetailComponent},
-  {path: '', redirectTo: '/contacts', pathMatch: 'full'}
+  {path: '', redirectTo: '/contacts', pathMatch: 'full'},
+  {path: 'contacts/edit/:id', component: ContactDetailComponent}
 ];
 
 @NgModule({
@@ -52,9 +54,10 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
     MatFormFieldModule,
     MatInputModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule
   ],
-  providers: [ContactService, ToolbarService],
+  providers: [ContactService, ToolbarService, ContactLocalStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
