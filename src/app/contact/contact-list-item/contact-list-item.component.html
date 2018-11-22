@@ -10,7 +10,7 @@
     <mat-card-content><mat-icon>email</mat-icon> {{contact.email}} </mat-card-content>
     <mat-card-content><mat-icon>phone</mat-icon> {{contact.gsm}}</mat-card-content>
     <mat-card-actions fxLayoutAlign="end">
-      <button mat-icon-button (click)="onDelete()"><mat-icon>delete</mat-icon></button>
+      <button mat-icon-button (click)="onDelete(contact)"><mat-icon>delete</mat-icon></button>
     </mat-card-actions>
   </mat-card>
 </div>

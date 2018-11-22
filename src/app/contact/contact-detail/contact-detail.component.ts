@@ -35,7 +35,7 @@ export class ContactDetailComponent implements OnInit {
     this.router.navigate(['/contacts']);
     const contactId = this.route.snapshot.paramMap.get('id');
     if (contactId != null) {
-      this.contact = this.contactService.getContactById(contactId);
+      this.contactService.editContact(this.contact);
       this.snackBar.open('Contact edited!', '', {
         duration: 3000
       });

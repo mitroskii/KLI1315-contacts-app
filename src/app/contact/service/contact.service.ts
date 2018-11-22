@@ -27,6 +27,10 @@ export class ContactService {
   getContactById(id: string): Contact {
     return this.contactLocalStorage.getContactById(id);
   }
+
+  editContact(contact: Contact) {
+    return this.contactLocalStorage.editContact(contact);
+  }
 }
 
 

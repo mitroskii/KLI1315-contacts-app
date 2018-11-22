@@ -22,7 +22,11 @@ export class ContactLocalStorageService {
   }
 
   removeContact(contact: Contact) {
-    this.contacts.splice(this.contacts.indexOf(contact), 1);
+    for (let i = 0; i < this.contacts.length; i++) {
+      if (contact.id === this.contacts[i].id) {
+        this.contacts.splice(i, 1);
+      }
+    }
     localStorage.removeItem(this.localStorageKey);
     localStorage.setItem(this.localStorageKey, JSON.stringify(this.contacts));
   }
@@ -40,11 +44,22 @@ export class ContactLocalStorageService {
   }
 
   getContactById(id: string): Contact {
+    let copy: Contact;
     for (const contact of this.contacts) {
       if (contact.id === Number(id)) {
-        return contact;
+        copy = Object.assign({}, contact);
       }
     }
+    return copy;
+  }
+
+  editContact(contact: Contact) {
+    for (let i = 0; i < this.contacts.length; i++) {
+      if (contact.id === this.contacts[i].id) {
+        this.contacts[i] = contact;
+      }
+    }
+    localStorage.setItem(this.localStorageKey, JSON.stringify(this.contacts));
   }
 }
 
