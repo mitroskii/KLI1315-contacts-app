@@ -24,8 +24,13 @@ export class ContactDetailComponent implements OnInit {
   ngOnInit() {
     const contactId = this.route.snapshot.paramMap.get('id');
     if (contactId != null) {
-      this.contact = this.contactService.getContactById(contactId);
+     // this.contact = this.contactService.getContactById(contactId);
       this.toolbar.setToolbarOptions(new ToolbarOptions('back', 'Edit Contact'));
+      this.contactService.getContactById(contactId).subscribe(result => {
+        this.contact = result;
+      }, error => {
+        console.error(error);
+      });
     } else {
       this.toolbar.setToolbarOptions(new ToolbarOptions('back', 'Create Contact'));
     }

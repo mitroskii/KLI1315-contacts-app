@@ -16,11 +16,15 @@ export class ContactListComponent implements OnInit {
 
   constructor(private contactService: ContactService, private router: Router,
               private toolbar: ToolbarService) {
+    this.contacts = [];
   }
 
   ngOnInit() {
     this.toolbar.setToolbarOptions(new ToolbarOptions('menu', 'Contacts Application'));
-    this.contacts = this.contactService.getContacts();
+    // this.contacts = this.contactService.getContacts();
+    this.contactService.getContacts().subscribe(result => {
+      this.contacts = result;
+    });
   }
 
   onContactSelect(contact: Contact) {
