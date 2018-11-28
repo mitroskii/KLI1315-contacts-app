@@ -8,7 +8,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ToolbarComponent} from './ui/toolbar/toolbar/toolbar.component';
 import {
   MatButtonModule,
-  MatCardModule,
+  MatCardModule, MatDialogModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
@@ -23,6 +23,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {ToolbarService} from './ui/toolbar/toolbar.service';
 import {ContactLocalStorageService} from './contact/service/contact-local-storage.service';
+import { DialogConfirmComponent } from './ui/dialog-confirm/dialog-confirm/dialog-confirm.component';
 
 
 const appRoutes: Routes = [
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
     ContactListComponent,
     ContactListItemComponent,
     ToolbarComponent,
-    ContactDetailComponent
+    ContactDetailComponent,
+    DialogConfirmComponent
   ],
   imports: [
     BrowserModule,
@@ -55,7 +57,8 @@ const appRoutes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatDialogModule
   ],
   providers: [ContactService, ToolbarService, ContactLocalStorageService],
   bootstrap: [AppComponent]

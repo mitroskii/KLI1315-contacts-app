@@ -41,7 +41,7 @@ export class ContactDetailComponent implements OnInit {
       });
     } else {
       this.contactService.addContact(this.contact);
-      this.snackBar.open('Contact created', '', {
+      this.snackBar.open('Contact created!', '', {
         duration: 3000
       });
     }
