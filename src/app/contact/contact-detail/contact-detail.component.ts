@@ -24,7 +24,6 @@ export class ContactDetailComponent implements OnInit {
   ngOnInit() {
     const contactId = this.route.snapshot.paramMap.get('id');
     if (contactId != null) {
-     // this.contact = this.contactService.getContactById(contactId);
       this.toolbar.setToolbarOptions(new ToolbarOptions('back', 'Edit Contact'));
       this.contactService.getContactById(contactId).subscribe(result => {
         this.contact = result;
@@ -37,17 +36,20 @@ export class ContactDetailComponent implements OnInit {
   }
 
   onSave(): void {
-    this.router.navigate(['/contacts']);
     const contactId = this.route.snapshot.paramMap.get('id');
     if (contactId != null) {
-      this.contactService.editContact(this.contact);
-      this.snackBar.open('Contact edited!', '', {
-        duration: 3000
+      this.contactService.editContact(this.contact).subscribe(result => {
+        this.router.navigate(['/contacts']);
+        this.snackBar.open('Contact edited!', '', {
+          duration: 3000
+        });
       });
     } else {
-      this.contactService.addContact(this.contact);
-      this.snackBar.open('Contact created!', '', {
-        duration: 3000
+      this.contactService.addContact(this.contact).subscribe(result => {
+        this.router.navigate(['/contacts']);
+        this.snackBar.open('Contact created!', '', {
+          duration: 3000
+        });
       });
     }
   }

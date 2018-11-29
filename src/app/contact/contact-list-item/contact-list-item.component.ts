@@ -3,6 +3,8 @@ import {Contact} from '../contact';
 import {Router} from '@angular/router';
 import {ContactLocalStorageService} from '../service/contact-local-storage.service';
 import {ContactService} from '../service/contact.service';
+import {MatDialog, MatSnackBar} from '@angular/material';
+import {DialogConfirmComponent} from '../../ui/dialog-confirm/dialog-confirm/dialog-confirm.component';
 
 @Component({
   selector: 'app-contact-list-item',
@@ -12,26 +14,29 @@ import {ContactService} from '../service/contact.service';
 export class ContactListItemComponent implements OnInit {
 
   @Input() contact: Contact;
-  @Output() contactSelect: EventEmitter<any>;
+  @Output() contactDeleted: EventEmitter<any>;
 
   constructor(private contactLocalStorage: ContactLocalStorageService, private router: Router,
-              private contactService: ContactService) {
-    this.contactSelect = new EventEmitter<any>();
+              private contactService: ContactService, private snackBar: MatSnackBar,
+              private dialog: MatDialog) {
+    this.contactDeleted = new EventEmitter<any>();
 
   }
 
   ngOnInit() {
   }
 
-  onContactSelect() {
-    this.contactSelect.emit();
-  }
-
-  onDelete(contact: Contact) {
-  this.contactService.removeContact(contact);
-  }
-
   editItem() {
     this.router.navigate(['/contacts/edit', this.contact.id]);
+  }
+
+  removeContact() {
+    this.dialog.open(DialogConfirmComponent);
+    this.contactService.deleteContact(this.contact).subscribe(() => {
+      this.snackBar.open('Contact removed!', '', {
+        duration: 3000
+      });
+      this.contactDeleted.emit(this.contact);
+    });
   }
 }

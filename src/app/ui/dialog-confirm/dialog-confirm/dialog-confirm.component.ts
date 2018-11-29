@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {MatDialog} from '@angular/material';
 
 @Component({
@@ -8,9 +8,10 @@ import {MatDialog} from '@angular/material';
 })
 export class DialogConfirmComponent implements OnInit {
 
-  constructor(public dialog: MatDialog) { }
-
-  ngOnInit() {
+  constructor(public dialog: MatDialog) {
   }
 
+  ngOnInit() {
+
+  }
 }

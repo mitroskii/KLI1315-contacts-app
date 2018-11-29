@@ -21,16 +21,20 @@ export class ContactListComponent implements OnInit {
 
   ngOnInit() {
     this.toolbar.setToolbarOptions(new ToolbarOptions('menu', 'Contacts Application'));
-    // this.contacts = this.contactService.getContacts();
-    this.contactService.getContacts().subscribe(result => {
-      this.contacts = result;
-    });
+    this.loadContacts();
   }
 
-  onContactSelect(contact: Contact) {
+  onContactDeleted(contact: Contact) {
+    this.loadContacts();
   }
 
   onContactCreate(): void {
     this.router.navigate(['/contacts/new']);
+  }
+
+  loadContacts() {
+    this.contactService.getContacts().subscribe(result => {
+      this.contacts = result;
+    });
   }
 }

@@ -24,6 +24,9 @@ import {FormsModule} from '@angular/forms';
 import {ToolbarService} from './ui/toolbar/toolbar.service';
 import {ContactLocalStorageService} from './contact/service/contact-local-storage.service';
 import { DialogConfirmComponent } from './ui/dialog-confirm/dialog-confirm/dialog-confirm.component';
+import {ContactProvider} from './contact/interfaces/contact-provider';
+import {ContactHttpService} from './contact/service/contact-http.service';
+import {environment} from '../environments/environment';
 
 
 const appRoutes: Routes = [
@@ -60,8 +63,12 @@ const appRoutes: Routes = [
     MatSnackBarModule,
     MatDialogModule
   ],
-  providers: [ContactService, ToolbarService, ContactLocalStorageService],
-  bootstrap: [AppComponent]
+  providers: [ContactService, ToolbarService, ContactLocalStorageService,
+    {provide: ContactProvider,
+      useClass: environment.apiEnabled ? ContactHttpService : ContactLocalStorageService}
+    ],
+  bootstrap: [AppComponent],
+  entryComponents: [DialogConfirmComponent]
 })
 export class AppModule {
 }
