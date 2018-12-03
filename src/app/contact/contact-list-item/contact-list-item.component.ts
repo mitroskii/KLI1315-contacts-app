@@ -31,12 +31,15 @@ export class ContactListItemComponent implements OnInit {
   }
 
   removeContact() {
-    this.dialog.open(DialogConfirmComponent);
-    this.contactService.deleteContact(this.contact).subscribe(() => {
-      this.snackBar.open('Contact removed!', '', {
-        duration: 3000
-      });
-      this.contactDeleted.emit(this.contact);
-    });
+    const dialogRef = this.dialog.open(DialogConfirmComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.contactService.deleteContact(this.contact).subscribe(() => {
+          this.snackBar.open('Contact removed!', '', {
+            duration: 3000
+          });
+          this.contactDeleted.emit(this.contact);
+        });
+    }});
   }
 }
