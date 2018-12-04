@@ -43,6 +43,16 @@
           </mat-error>
         </mat-form-field>
         <mat-form-field>
+          <input matInput [(ngModel)]="contact.postalCode"
+                 name="PostalCode" #PostalCode="ngModel"
+                 type="text"
+                 required
+                 placeholder="Postalcode">
+          <mat-error *ngIf="PostalCode.invalid">
+            Postalcode required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field>
           <input matInput [(ngModel)]="contact.email"
                  name="Email" #Email="ngModel"
                  type="email"

@@ -6,10 +6,11 @@
     <mat-card-title><ngx-avatar name="{{contact.firstName}} {{contact.lastName}}" fxLayoutAlign="center"></ngx-avatar></mat-card-title>
     <mat-card-content>{{contact.firstName}} {{contact.lastName}}</mat-card-content>
     <mat-card-content><mat-icon>location_city</mat-icon> {{contact.city}}</mat-card-content>
-    <mat-card-content><mat-icon>place</mat-icon> {{contact.address}}</mat-card-content>
+    <mat-card-content><mat-icon>place</mat-icon> {{contact.address}}, {{contact.postalCode}}</mat-card-content>
     <mat-card-content><mat-icon>email</mat-icon> {{contact.email}} </mat-card-content>
     <mat-card-content><mat-icon>phone</mat-icon> {{contact.gsm}}</mat-card-content>
     <mat-card-actions fxLayoutAlign="end">
+      <button mat-icon-button (click)="navigateToMap()"><mat-icon>place</mat-icon></button>
       <button mat-icon-button (click)="removeContact(contact)"><mat-icon>delete</mat-icon></button>
     </mat-card-actions>
   </mat-card>

@@ -27,7 +27,7 @@ export class ContactListItemComponent implements OnInit {
   }
 
   editItem() {
-    this.router.navigate(['/contacts/edit', this.contact.id]);
+    this.router.navigate(['contacts/edit', this.contact.id]);
   }
 
   removeContact() {
@@ -41,5 +41,10 @@ export class ContactListItemComponent implements OnInit {
           this.contactDeleted.emit(this.contact);
         });
     }});
+  }
+
+  navigateToMap() {
+    this.router.navigate(['contacts/map', {address: this.contact.address,
+      city: this.contact.city }]);
   }
 }
