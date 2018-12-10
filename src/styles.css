@@ -14,5 +14,8 @@ body {
   position: fixed !important;
   bottom: 20px;
   right: 20px;
+}
 
+.search{
+  text-align: center;
 }

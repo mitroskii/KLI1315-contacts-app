@@ -1,3 +1,9 @@
+<div class="search">
+  <button mat-icon-button (click)="searchContact()"><mat-icon>search</mat-icon></button>
+  <mat-form-field>
+    <input matInput placeholder="Search contact">
+  </mat-form-field>
+</div>
 <div fxLayout="row" fxLayoutAlign="space-evenly" fxLayout.xs="column" fxLayout.lt-md="column" fxLayout.md="column" fxLayout.lt-sm="column">
   <app-contact-list-item *ngFor="let contact of contacts | paginate: { itemsPerPage: 4, currentPage: p}"
                          [contact]="contact"

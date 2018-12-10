@@ -14,7 +14,7 @@ export class ContactHttpService implements ContactProvider {
   url: string;
 
   constructor(private httpClient: HttpClient) {
-    this.url = environment.apiEndpointUrl + '/contacts';
+    this.url = environment.apiEndPointUrl + '/contacts';
   }
 
   get(): Observable<Contact[]> {
@@ -43,5 +43,11 @@ export class ContactHttpService implements ContactProvider {
 
   delete(contact: Contact): Observable<any> {
     return this.httpClient.delete(this.url + '/' + contact.id);
+  }
+
+ search(): Observable<Contact[]> {
+    return this.httpClient.get(this.url + '?q=' + '').pipe(map(response => {
+      return response as Contact[];
+    }));
   }
 }

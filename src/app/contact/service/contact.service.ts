@@ -33,6 +33,10 @@ export class ContactService {
   editContact(contact: Contact): Observable<Contact> {
     return this.contactProvider.edit(contact);
   }
+
+  searchContact(): Observable<Contact[]> {
+    return this.contactProvider.get();
+  }
 }
 
 
